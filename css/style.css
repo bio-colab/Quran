@@ -1,0 +1,90 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+#app {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+#surah-list-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#surah-list {
+    list-style: none;
+    padding: 0;
+}
+
+#surah-list li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+#surah-list li:hover {
+    background-color: #ecf0f1;
+}
+
+#surah-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.ayah {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.ayah-text {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.ayah-details {
+    display: none; /* Hide by default */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+}
+
+.ayah-details.visible {
+    display: block; /* Show when active */
+}
+
+.ayah-translation {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.ayah-audio {
+    margin-top: 10px;
+}
+
+audio {
+    width: 100%;
+}
