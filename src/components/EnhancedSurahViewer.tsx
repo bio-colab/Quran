@@ -22,8 +22,6 @@ interface EnhancedSurahViewerProps {
   fontSize: string;
   selectedReciter: Reciter | null;
   onReciterChange: (reciter: Reciter) => void;
-  hideTextMode: boolean;
-  onToggleHideText: () => void;
   initialAyah?: number | null;
 }
 
@@ -36,10 +34,9 @@ export default function EnhancedSurahViewer({
   fontSize,
   selectedReciter,
   onReciterChange,
-  hideTextMode,
-  onToggleHideText,
   initialAyah = null,
 }: EnhancedSurahViewerProps) {
+  const [hideTextInStudyMode, setHideTextInStudyMode] = useState(false);
   const [ayahs, setAyahs] = useState<Ayah[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentAyahIndex, setCurrentAyahIndex] = useState(0);
@@ -302,7 +299,7 @@ export default function EnhancedSurahViewer({
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
                   الآية الحالية: {currentAyah.ayahNumber}
                 </p>
-                {!hideTextMode && (
+                {!(hideTextInStudyMode && (showStudyMode || showMemorizationTest)) && (
                   <p
                     className={`${fontSizeClasses[fontSize as keyof typeof fontSizeClasses]} leading-loose font-quran text-gray-900 dark:text-gray-100`}
                     dir="rtl"
@@ -346,14 +343,25 @@ export default function EnhancedSurahViewer({
           </div>
         )}
 
+        {(showStudyMode || showMemorizationTest) && (
+          <div className="my-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+            <button
+              onClick={() => setHideTextInStudyMode(!hideTextInStudyMode)}
+              className="w-full px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600"
+            >
+              {hideTextInStudyMode ? 'إظهار النص' : 'إخفاء النص'}
+            </button>
+          </div>
+        )}
+
         {showRecitationTest && currentAyah && (
           <div className="mb-6">
             <RecitationTest
               originalText={currentAyah.text}
               ayahNumber={currentAyah.ayahNumber}
               surahName={surah.name}
-              hideTextMode={hideTextMode}
-              onToggleHideText={onToggleHideText}
+              hideTextMode={hideTextInStudyMode}
+              onToggleHideText={() => setHideTextInStudyMode(!hideTextInStudyMode)}
             />
           </div>
         )}
@@ -364,6 +372,7 @@ export default function EnhancedSurahViewer({
               surahNumber={surahNumber}
               ayahs={ayahs}
               fontSize={fontSize}
+              hideText={hideTextInStudyMode}
             />
           </div>
         )}
@@ -487,7 +496,7 @@ export default function EnhancedSurahViewer({
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1" dir="rtl">
-                    {!hideTextMode && (
+                    {!(hideTextInStudyMode && (showStudyMode || showMemorizationTest)) ? (
                       <p
                         className={`${fontSizeClasses[fontSize as keyof typeof fontSizeClasses]} leading-loose font-quran ${
                           isActive ? 'text-emerald-900 dark:text-emerald-100' : 'text-gray-900 dark:text-gray-100'
@@ -502,8 +511,7 @@ export default function EnhancedSurahViewer({
                           {ayah.ayahNumber}
                         </span>
                       </p>
-                    )}
-                    {hideTextMode && (
+                    ) : (
                       <div className="text-center py-8 text-gray-400 dark:text-gray-600">
                         <p className="text-lg">النص مخفي - الآية {ayah.ayahNumber}</p>
                       </div>

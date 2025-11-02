@@ -1,4 +1,4 @@
-import { TrendingUp, BookOpen, Clock, Target, Flame, Award } from 'lucide-react';
+import { TrendingUp, BookOpen, Clock, ShieldCheck, CalendarCheck, Award } from 'lucide-react';
 import { useProgress } from '../../hooks/useProgress';
 import { useMemorization } from '../../hooks/useMemorization';
 import type { Surah } from '../../types/quran';
@@ -39,10 +39,10 @@ export default function Dashboard({ surahs, onSurahSelect }: DashboardProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg p-6 text-white">
           <div className="flex items-center justify-between mb-4">
-            <Target className="w-8 h-8" />
+            <ShieldCheck className="w-8 h-8" />
             <span className="text-3xl font-bold">{stats.totalProgress}%</span>
           </div>
-          <p className="text-emerald-50 text-sm">التقدم الإجمالي</p>
+          <p className="text-emerald-50 text-sm">الإنجاز الكلي</p>
           <p className="text-emerald-100 text-xs mt-1">
             {stats.memorizedSurahs + stats.masteredSurahs} من {stats.totalSurahs} سورة
           </p>
@@ -72,10 +72,10 @@ export default function Dashboard({ surahs, onSurahSelect }: DashboardProps) {
 
         <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-lg p-6 text-white">
           <div className="flex items-center justify-between mb-4">
-            <Flame className="w-8 h-8" />
+            <CalendarCheck className="w-8 h-8" />
             <span className="text-3xl font-bold">{stats.currentStreak}</span>
           </div>
-          <p className="text-orange-50 text-sm">أيام متتالية</p>
+          <p className="text-orange-50 text-sm">أيام المثابرة</p>
           <p className="text-orange-100 text-xs mt-1">
             أطول سلسلة: {stats.longestStreak} يوم
           </p>
