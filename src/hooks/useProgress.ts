@@ -32,7 +32,7 @@ export function useProgress() {
 
     if (studyDates.length > 0) {
       const today = new Date().toDateString();
-      let checkDate = new Date();
+      const checkDate = new Date();
 
       // حساب current streak
       for (let i = 0; i < studyDates.length; i++) {

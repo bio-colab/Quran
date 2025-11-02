@@ -6,8 +6,7 @@ import EnhancedSurahViewer from './components/EnhancedSurahViewer';
 import SearchComponent from './components/Search';
 import Bookmarks from './components/Bookmarks';
 import Settings from './components/Settings';
-import Dashboard from './components/Memorization/Dashboard';
-import ReviewMode from './components/Memorization/ReviewMode';
+import MemorizationCenter from './components/Memorization/MemorizationCenter';
 import { useBookmarks } from './hooks/useBookmarks';
 import { useSettings } from './hooks/useSettings';
 import { useNotifications } from './hooks/useNotifications';
@@ -83,9 +82,6 @@ function App() {
     updateSettings({ selectedReciter: reciter.id });
   };
 
-  const toggleHideText = () => {
-    updateSettings({ hideTextMode: !settings.hideTextMode });
-  };
 
   const handleLoadComplete = () => {
     setIsLoading(false);
@@ -144,26 +140,15 @@ function App() {
                 )}
               </button>
               <button
-                onClick={() => setViewMode('dashboard')}
-                className={`p-2 rounded-lg transition-colors ${
-                  viewMode === 'dashboard'
-                    ? 'bg-emerald-500 text-white'
-                    : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700'
-                }`}
-                title="لوحة المعلومات"
-              >
-                <BarChart3 className="w-6 h-6" />
-              </button>
-              <button
-                onClick={() => setViewMode('review')}
+                onClick={() => setViewMode('memorization')}
                 className={`p-2 rounded-lg transition-colors relative ${
-                  viewMode === 'review'
+                  viewMode === 'memorization'
                     ? 'bg-emerald-500 text-white'
                     : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
-                title="المراجعة"
+                title="مركز الحفظ"
               >
-                <RotateCcw className="w-6 h-6" />
+                <GraduationCap className="w-6 h-6" />
                 {reviewStats.today > 0 && (
                   <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                     {reviewStats.today}
@@ -204,8 +189,6 @@ function App() {
             fontSize={settings.fontSize}
             selectedReciter={selectedReciter}
             onReciterChange={handleReciterChange}
-            hideTextMode={settings.hideTextMode || false}
-            onToggleHideText={toggleHideText}
             initialAyah={initialAyah}
           />
         )}
@@ -230,21 +213,11 @@ function App() {
           />
         )}
 
-        {viewMode === 'dashboard' && (
-          <Dashboard
-            surahs={surahs}
-            onSurahSelect={(surahNumber) => handleSurahSelect(surahNumber)}
-          />
-        )}
-
-        {viewMode === 'review' && (
-          <ReviewMode
+        {viewMode === 'memorization' && (
+          <MemorizationCenter
             surahs={surahs}
             onBack={() => setViewMode('surahs')}
-            onAyahReview={(surahNumber, ayahNumber, correct) => {
-              // يمكن تنفيذ منطق تسجيل نتيجة المراجعة هنا
-              console.log(` Reviewed ayah ${ayahNumber} of surah ${surahNumber}: ${correct ? 'Correct' : 'Incorrect'}`);
-            }}
+            onSurahSelect={handleSurahSelect}
           />
         )}
 
