@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Scheherazade+New:wght@400;700&family=Cairo:wght@400;600;700&display=swap');
+
+@font-face {
+  font-family: 'KFGQPC Uthmanic Script HAFS';
+  src: url('/fonts/KFGQPC-Uthmanic-Script-HAFS.woff2') format('woff2'),
+    url('/fonts/KFGQPC-Uthmanic-Script-HAFS.woff') format('woff');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%
+  }
+
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Cairo', sans-serif;
+  }
+}
+
+/* خطوط القرآن العربية */
+.font-arabic {
+  font-family: 'Amiri Quran', 'Scheherazade New', serif;
+  line-height: 2;
+}
+
+.font-quran {
+  font-family: 'KFGQPC Uthmanic Script HAFS', 'Amiri Quran', 'Scheherazade New', serif;
+  line-height: 2.4;
+  font-feature-settings: 'liga' 1, 'calt' 1;
+  text-rendering: optimizeLegibility;
+}
+
+.font-uthmanic {
+  font-family: 'Amiri Quran', serif;
+}
+
+.font-naskh {
+  font-family: 'Scheherazade New', serif;
+}
+
+.font-kufi {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700;
+}
+
+/* تحسين قراءة النصوص العربية */
+[dir="rtl"] {
+  text-align: right;
+}
+
+/* تحسين المسافات للنصوص العربية */
+.leading-loose {
+  line-height: 2.5;
+}
+
+img {
+  object-position: top;
+}
+
+.fixed {
+  position: fixed;
+}
+
+/* تحسينات للأوضاع الداكنة */
+.dark {
+  color-scheme: dark;
+}
+
+/* تحسين العرض للأجهزة المحمولة */
+@media (max-width: 640px) {
+  .font-arabic {
+    line-height: 2.2;
+  }
+}

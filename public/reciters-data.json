@@ -1,0 +1,79 @@
+[
+  {
+    "id": 101,
+    "name": "أبو بكر الشاطري",
+    "arabicName": "أبو بكر الشاطري",
+    "style": "مرتل",
+    "country": "السعودية",
+    "audioUrl": "",
+    "readerType": "ayah"
+  },
+  {
+    "id": 107,
+    "name": "سعود الشريم",
+    "arabicName": "سعود الشريم",
+    "style": "مرتل",
+    "country": "السعودية",
+    "audioUrl": "",
+    "readerFolder": "surah-recitation-sa-ud-ash-shuraym",
+    "readerType": "surah"
+  },
+  {
+    "id": 100,
+    "name": "عبد الرحمن السديس",
+    "arabicName": "عبد الرحمن السديس",
+    "style": "مرتل",
+    "country": "السعودية",
+    "audioUrl": "",
+    "readerType": "ayah"
+  },
+  {
+    "id": 103,
+    "name": "عبد الرحمن السديس",
+    "arabicName": "عبد الرحمن السديس",
+    "style": "مرتل",
+    "country": "السعودية",
+    "audioUrl": "",
+    "readerFolder": "surah-recitation-abdur-rahman-as-sudais",
+    "readerType": "surah"
+  },
+  {
+    "id": 106,
+    "name": "محمد صديق المنشاوي",
+    "arabicName": "محمد صديق المنشاوي (مع الأطفال)",
+    "style": "مرتل",
+    "country": "مصر",
+    "audioUrl": "",
+    "readerFolder": "surah-recitation-muhammad-siddiq-al-minshawi-with-kids",
+    "readerType": "surah"
+  },
+  {
+    "id": 105,
+    "name": "مشاري راشد العفاسي",
+    "arabicName": "مشاري راشد العفاسي",
+    "style": "مرتل",
+    "country": "الكويت",
+    "audioUrl": "",
+    "readerFolder": "surah-recitation-mishari-rashid-al-afasy",
+    "readerType": "surah"
+  },
+  {
+    "id": 104,
+    "name": "هادي توريه",
+    "arabicName": "هادي توريه",
+    "style": "مرتل",
+    "country": "مالي",
+    "audioUrl": "",
+    "readerFolder": "surah-recitation-hady-toure",
+    "readerType": "surah"
+  },
+  {
+    "id": 102,
+    "name": "هاني الرفاعي",
+    "arabicName": "هاني الرفاعي",
+    "style": "مرتل",
+    "country": "السعودية",
+    "audioUrl": "",
+    "readerType": "ayah"
+  }
+]
