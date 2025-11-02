@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "npm install && vite",
-    "build": "npm install && rmdir /s /q node_modules\\.vite-temp 2>nul || exit 0 && npx tsc -b && npx vite build",
-    "build:prod": "npm install && rmdir /s /q node_modules\\.vite-temp 2>nul || exit 0 && npx tsc -b && set BUILD_MODE=prod && npx vite build",
+    "dev": "vite",
+    "build": "vite build",
+    "build:prod": "set BUILD_MODE=prod && vite build",
     "lint": "npm install && npx eslint .",
     "preview": "npm install && npx vite preview",
     "install-deps": "npm install",

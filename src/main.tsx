@@ -1,3 +1,4 @@
+import { Capacitor } from '@capacitor/core';
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ErrorBoundary } from './components/ErrorBoundary.tsx'
@@ -8,15 +9,13 @@ import App from './App.tsx'
 const initializeCapacitor = async () => {
   try {
     // Check if we're in a Capacitor environment
-    const isCapacitor = typeof Capacitor !== 'undefined';
-    
-    if (isCapacitor) {
-      console.log('Running in Capacitor environment');
+    if (Capacitor.isNativePlatform()) {
+      console.log('Running in Capacitor native environment');
+    } else {
       // Load PWA elements for web platform only
-      if (!Capacitor.isNativePlatform()) {
-        const { defineCustomElements } = await import('@ionic/pwa-elements/loader');
-        defineCustomElements(window);
-      }
+      console.log('Running on web, loading PWA elements');
+      const { defineCustomElements } = await import('@ionic/pwa-elements/loader');
+      defineCustomElements(window);
     }
   } catch (error) {
     console.log('Capacitor not available or initialization failed:', error);
